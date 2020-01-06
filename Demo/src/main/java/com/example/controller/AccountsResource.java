@@ -31,7 +31,7 @@ public class AccountsResource {
 	 */
 	@PostMapping(value = "/create")
 	public ResponseEntity<Accounts> create(@RequestBody Accounts accounts) throws CustomException 	 {
-		if (accounts == null) {
+		if (accounts.getUserEmail() == null || accounts.getUserName()==null) {
 			throw new CustomException("should not be null");
 		}
 		Accounts account = accountsService.createNewAccount(accounts);
